@@ -1,4 +1,3 @@
-
 """ reading the file dna.fasta and creating the dictionary which contains:
     - names of a genes as keys 
     - DNA as values """
@@ -10,6 +9,7 @@ with open('dna.fasta', 'r+') as dna_file:
             dna_dictionary[gene] = ''
         else:
             dna_dictionary[gene] += f'{line.strip()}'
+
 
 def count_nucleotides(dna):
     """returning the dictionary which contains:
@@ -31,6 +31,7 @@ def count_nucleotides(dna):
         num_of_nucleotides[gene] = num_of_nucleotides_gene
     return num_of_nucleotides
 
+
 def translate_from_dna_to_rna(dna):
     """returning the dictionary which contains:
     - names of a genes as keys 
@@ -46,6 +47,7 @@ def translate_from_dna_to_rna(dna):
                     rna_code += f'{dna_to_rna[nucleotide_dna]}'
         rna[gene] = rna_code
     return(rna)
+
 
 def translate_rna_to_protein(rna):
     """returning the dictionary which contains:
@@ -70,11 +72,13 @@ def translate_rna_to_protein(rna):
         protein[gene] = protein_gene
     return(protein)
 
+
 """ writing the statistics of nucleotides in dna to separate file """
 nucleotides_statistic = count_nucleotides(dna_dictionary)
 with open('1_Statistics_of_nucleotides.txt', 'w') as num_of_nucleotides_file:
     for gene, num_of_nucleotides_gene in nucleotides_statistic.items():
         num_of_nucleotides_file.write(f'{gene}: {num_of_nucleotides_gene}\n')
+
 
 """ writing the results of DNA to RNA translation to separate file """
 rna_results = translate_from_dna_to_rna(dna_dictionary)
@@ -82,16 +86,9 @@ with open('2_DNA_to_RNA_translation.txt', 'w') as rna_file:
     for gene, rna_code in rna_results.items():
         rna_file.write(f'{gene}\n{rna_code}\n')
 
+
 """ writing the results of RNA to protein translation to separate file """
 protein_results = translate_rna_to_protein(rna_results)
 with open('3_RNA_to_protein_translation.txt', 'w') as protein_file:
     for gene, protein_gene in protein_results.items():
         protein_file.write(f'{gene}\n{protein_gene}\n')
-
-
-
-
-	
-
-
-
