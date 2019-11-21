@@ -23,11 +23,11 @@ def count_nucleotides(dna):
 			if nucleotide in 'ATG':	
 				num_of_nucleotide = dna[gene].count(nucleotide)
 				num_of_nucleotides_gene += f'{nucleotide}' \
-										 f' - {num_of_nucleotide}, '
+							   f' - {num_of_nucleotide}, '
 			else:
 				num_of_nucleotide = dna[gene].count(nucleotide)
 				num_of_nucleotides_gene += f'{nucleotide}' \
-										 f' - {num_of_nucleotide}'
+							   f' - {num_of_nucleotide}'
 		num_of_nucleotides[gene] = num_of_nucleotides_gene
 	return num_of_nucleotides
 
